@@ -20,13 +20,13 @@ export enum LookStatus {
 }
 
 export const LiveText = {
-    [LiveStatus.NOT_CONNECT]: '开启会议',
+    [LiveStatus.NOT_CONNECT]: '开启摄像头',
     [LiveStatus.CONNECTING]: '会议创建中',
-    [LiveStatus.CONNECTED]: '结束直播',
+    [LiveStatus.CONNECTED]: '退出会议',
 }
 
 export const LookText = {
     [LookStatus.NOT_CONNECT]: '邀请加入',
     [LookStatus.CONNECTING]: '连线中',
-    [LookStatus.CONNECTED]: '结束观看',
+    [LookStatus.CONNECTED]: '结束连接',
 }

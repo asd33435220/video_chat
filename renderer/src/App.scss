@@ -18,9 +18,9 @@
   overflow: hidden;
 
   .live-video,
-  .look-videos {
-    width: 100%;
-    height: fit-content;
+  .look-video {
+    height: 50%;
+    width: fit-content;
     flex-shrink: 1;
   }
 }

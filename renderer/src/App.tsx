@@ -32,6 +32,7 @@ function App() {
             const candidate = data
             addIceCandidate(candidate)
           }
+          break;
         default:
           break;
       }
@@ -42,7 +43,7 @@ function App() {
         console.log('ev', ev.streams[0]);
       }
       lookRef.current.srcObject = ev.streams[0]
-      liveRef.current.play()
+      lookRef.current.play()
       setLookStatus(LookStatus.CONNECTED)
     }
     pc.ontrack = fn
@@ -73,9 +74,8 @@ function App() {
         liveRef.current.play()
         streamRef.current = stream
         setLiveStatus(LiveStatus.CONNECTED)
-
-
       } catch (e) {
+        console.log('e',e);
         console.log('直播间创建失败');
         setLiveStatus(LiveStatus.NOT_CONNECT)
       }
@@ -156,7 +156,7 @@ function App() {
       await pc.addIceCandidate(new RTCIceCandidate(candidate))
     }
     if (isLog) {
-      console.log('--------addIce candidate Done-----------', candidate);
+      console.log('addIceCandidate', candidate);
     }
   }
 
@@ -165,7 +165,6 @@ function App() {
     window.createAnswer = createAnswer
     window.addIceCandidate = addIceCandidate
     window.setRemote = setRemote
-
   }, [])
   return (
     <>
@@ -178,7 +177,7 @@ function App() {
 
         </div>
         <div className="live-button" onClick={handleCLickLook}>
-          <input placeholder='请输入直播间号' type="tel" value={liveCode} onChange={e => {
+          <input placeholder='请输入对方会议号' type="tel" value={liveCode} onChange={e => {
             setLiveCode(e.target.value)
           }}
             onClick={e => {
@@ -194,7 +193,7 @@ function App() {
             e.stopPropagation()
             copyText(roomCode)
           }}>
-            直播间号: {roomCode}
+            你的会议号: {roomCode}
           </span>}
         </div>
 
